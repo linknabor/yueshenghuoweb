@@ -16,6 +16,7 @@
            var o = gercode().code;
            var appid =/127|test|localhost/.test(location.origin)?'wxa48ca61b68163483':'wx5b1a7c252c3cbc26';
            var baseurl = /127|test|localhost/.test(location.origin)?'https://test.e-shequ.com/guangming/weixin/':'https://www.gm4life.cn/guangming/weixin/';
+           var bsurl =/127|test|localhost/.test(location.origin)?'https://test.e-shequ.com/wangdu/weixin/':'http://wuye.gm4life.cn/wangdu/weixin/';
            var requrl = baseurl+"home/blank.html";
            if(o == undefined) {
                location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+
@@ -29,12 +30,10 @@
                 url:url,
                 dataType:"json",
                 data:{},
-                success:function(e){
-                    var res = e.data;
-                    console.log(e.data)
+                success:function(res){
                     if(res.success) {
                         var openid =res.result.openid;
-                        location.href =baseurl+ "wuye/index.html?openid="+openid+"#/";;
+                        location.href =bsurl+ "wuye/index.html?openid="+openid+"#/";;
                     }else {
                         alert('请刷新重试');
                     }
